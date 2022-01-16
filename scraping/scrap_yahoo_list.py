@@ -118,6 +118,25 @@ def get_list_NIFTY_BANK():
     df = make_df_stock_info(list_nifty, list_company_name, list_isin, list_sectors, list_industry, list_country, list_exchange)
     return df
 
+def get_list_EURONEXT():
+    """
+    list stock EURONEXT downloaded:
+        https://live.euronext.com/en/products/equities/list
+    """
+    df_EURONEXT = pd.read_csv(config.INPUT_DIR + "Euronext_Equities.csv")
+
+    list_euronext = df_EURONEXT["symbol"].tolist()
+    list_exchange = df_EURONEXT["market"].tolist()
+    list_isin = df_EURONEXT["isin"].tolist()
+    list_company_name = df_EURONEXT["name"].tolist()
+
+    list_country = ['' for i in range(len(list_euronext))]
+    list_industry = ['' for i in range(len(list_euronext))]
+    list_sectors = ['' for i in range(len(list_euronext))]
+
+    df = make_df_stock_info(list_euronext, list_company_name, list_isin, list_sectors, list_industry, list_country, list_exchange)
+    return df
+
 def get_list_undervalued():
     df_day_undervalued = si.get_undervalued_large_caps()
     list_undervalued = df_day_undervalued['Symbol'].tolist()
@@ -147,7 +166,6 @@ def get_list_losers():
 
     df = make_df_stock_info(list_losers, list_company_name, list_isin, list_sectors, list_industry, list_country, list_exchange)
     return df
-
 
 def get_list_gainers():
     df_day_gainers = si.get_day_gainers()

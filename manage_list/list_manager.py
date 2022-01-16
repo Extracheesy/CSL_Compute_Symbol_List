@@ -7,6 +7,7 @@ from scrap_wiki_list import get_list_DAX
 from scrap_wiki_list import get_list_NASDAQ100
 from scrap_wiki_list import get_list_DJI
 from scrap_wiki_list import get_list_SP500
+from scrap_yahoo_list import get_list_EURONEXT
 from scrap_yahoo_list import get_list_YAHOO
 from scrap_yahoo_list import get_list_NASDAQ
 from scrap_yahoo_list import get_list_DOW
@@ -18,6 +19,9 @@ from scrap_yahoo_list import get_list_NIFTY50
 from scrap_yahoo_list import get_list_NIFTY_BANK
 
 def get_list():
+    if(config.GET_EURONEXT == True):
+        df_EURONEXT = get_list_EURONEXT()
+        save_list(df_EURONEXT, config.OUTPUT_DIR_EUROPE, "EURONEXT.csv")
 
     if(config.GET_CAC == True):
         df_CAC = get_list_CAC()
