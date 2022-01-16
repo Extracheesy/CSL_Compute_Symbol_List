@@ -8,6 +8,7 @@ from merging_csv import merge_list
 from scrap_profile import get_info_list
 
 sys.path.append("./manage_list/")
+sys.path.append("./merging/")
 sys.path.append("./scraping/")
 sys.path.append("./init/")
 
