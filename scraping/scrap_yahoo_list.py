@@ -123,7 +123,7 @@ def get_list_EURONEXT():
     list stock EURONEXT downloaded:
         https://live.euronext.com/en/products/equities/list
     """
-    df_EURONEXT = pd.read_csv(config.INPUT_DIR + "Euronext_Equities.csv")
+    df_EURONEXT = pd.read_csv(config.INPUT_DIR_IMPORTED_DATA + "Euronext_Equities.csv")
 
     list_euronext = df_EURONEXT["symbol"].tolist()
     list_exchange = df_EURONEXT["market"].tolist()
