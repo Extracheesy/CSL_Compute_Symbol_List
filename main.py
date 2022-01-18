@@ -40,8 +40,6 @@ if __name__ == '__main__':
         clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA)
         clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA_ISNI)
 
-    # get_data_from_ISIN()
-
     mk_directories()
 
     get_list()
