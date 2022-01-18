@@ -1,7 +1,7 @@
 ,symbol,name,isin,sector,industry,country,exchange
-0,2CRSI,2CRSI,FR0013341781,,,,Euronext Paris
-1,2MX,2MX ORGANIC,FR0014000T90,,,,Euronext Paris
-2,3IN,,KYG6181G1055,,,,
+0,2CRSI.PA,2CRSI,,,,,Euronext Paris
+1,2MX.PA,2MX ORGANIC,,,,,Euronext Paris
+2,3IN.L,3i Infrastructure plc,,,,,
 3,AADR,,US00768Y2063,,,,
 4,AAF,,INE322R01014,,,,
 5,AALB,AALBERTS NV,INE717E01013,,,,Euronext Amsterdam
@@ -44,7 +44,7 @@
 42,ALBI,GASCOGNE,GB00B1G3LR35,,,,Euronext Growth Paris
 43,ALBIO,BIOSYNEX,FR0012332864,,,,Euronext Growth Paris
 44,ALBOA,BOA CONCEPT,DE0006209901,,,,Euronext Growth Paris
-45,ALBOO,BOOSTHEAT,GB0004832472,,,,Euronext Growth Paris
+45,ALBOO.PA,BOOSTHEAT,GB0004832472,,,,Euronext Growth Paris
 46,ALCES,CESAR,GB00BGQVB052,,,,Euronext Growth Paris
 47,ALCHI,ALCHIMIE,FR0014000JX7,,,,Euronext Growth Paris
 48,ALCOR,BIOCORP,JP3126210008,,,,Euronext Growth Paris

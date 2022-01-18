@@ -9,6 +9,7 @@ from merging_csv import merge_list
 from scrap_profile import get_info_list
 from scrap_profile import refresh_database
 from fill_df_data import fill_df
+from scrap_isin import get_data_from_ISIN
 
 sys.path.append("./compute_data/")
 sys.path.append("./manage_list/")
@@ -38,6 +39,8 @@ if __name__ == '__main__':
     if(config.CLEAN_DATABASE == True):
         clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA)
         clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA_ISNI)
+
+    get_data_from_ISIN()
 
     mk_directories()
 
