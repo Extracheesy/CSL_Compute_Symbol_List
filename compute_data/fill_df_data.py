@@ -1,8 +1,8 @@
 import pandas as pd
 import config
 
-def fill_df(input_files):
-    filename = config.OUTPUT_DIR_RESULT + 'symbol_list_' + input_files + ".csv"
+def fill_df(input_file):
+    filename = config.OUTPUT_DIR_RESULT + 'symbol_list_' + input_file + ".csv"
     df = pd.read_csv(filename)
     df = df.set_index('symbol', drop=True)
     df.drop("Unnamed: 0", axis=1, inplace=True)

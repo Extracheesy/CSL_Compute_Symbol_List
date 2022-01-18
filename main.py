@@ -3,9 +3,11 @@ import pandas as pd
 import config
 
 from tools import mk_directories
+from tools import clean_up_df_symbol
 from list_manager import get_list
 from merging_csv import merge_list
 from scrap_profile import get_info_list
+from scrap_profile import refresh_database
 from fill_df_data import fill_df
 
 sys.path.append("./compute_data/")
@@ -33,6 +35,10 @@ if __name__ == '__main__':
 
     print(config.DATE)
 
+    if(config.CLEAN_DATABASE == True):
+        clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA)
+        clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA_ISNI)
+
     mk_directories()
 
     get_list()
@@ -40,20 +46,12 @@ if __name__ == '__main__':
     input_file = str(sys.argv[2])
     input_file = input_file[2:]
     merge_list(input_file + '.csv')
-    fill_df(input_file)
+    if(config.FILL_DATA_FROM_DATABASE):
+        fill_df(input_file)
+    else:
+        # FILL DATA FROM YAHOO FINANCE
+        refresh_database(input_file)
 
-    # df = pd.read_csv(config.OUTPUT_DIR_RESULT + 'symbol_list_CSL_ALL.csv')
-    # df = pd.read_csv(config.OUTPUT_DIR_RESULT + 'batch_3_symbol_list_CSL_ALL_failed.csv')
-    df = pd.read_csv(config.OUTPUT_DIR_RESULT + 'symbol_list_CSL_EURONEXT.csv')
-
-    df_with_info, df_failed = get_info_list(df)
-
-    df_with_info.to_csv(config.OUTPUT_DIR_RESULT + 'CSL_EURONEXT_with_info.csv')
-    df_failed.to_csv(config.OUTPUT_DIR_RESULT + 'CSL_EURONEXT_failed.csv')
-
-
-#    df_with_info.to_csv(config.OUTPUT_DIR_RESULT + 'batch_3_symbol_list_CSL_ALL_with_info_run_2.csv')
-#    df_failed.to_csv(config.OUTPUT_DIR_RESULT + 'batch_3_symbol_list_CSL_ALL_failed_run_2.csv')
 
     print_hi('PyCharm')
 

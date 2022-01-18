@@ -49,3 +49,9 @@ def drop_df_duplicates(df, column):
     df.reset_index(drop=True, inplace=True)
     print("duplicates removed:", len_df - len(df))
     return df
+
+def clean_up_df_symbol(path):
+    df = pd.read_csv(path)
+    df = drop_df_duplicates(df, "symbol")
+    df.to_csv(path)
+
