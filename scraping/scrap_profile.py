@@ -35,7 +35,7 @@ def get_info_list(df):
     return df, df_failed
 
 
-def refresh_precomputed_database(input_file):
+def refresh_database(input_file):
     df = pd.read_csv(config.OUTPUT_DIR_RESULT + 'symbol_list' + input_file + '.csv')
 
     df_with_info, df_failed = get_info_list(df)

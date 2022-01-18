@@ -42,16 +42,21 @@ def get_input_list(file):
 
 def drop_df_duplicates(df, column):
     len_df = len(df)
-    print("ticker nb: ", len_df)
     # dropping ALL duplicate values
     df.sort_values(by=[column], inplace=True)
     df.drop_duplicates([column], keep='first',inplace=True)
     df.reset_index(drop=True, inplace=True)
-    print("duplicates removed:", len_df - len(df))
+    if(len_df - len(df) > 0):
+        print("ticker nb: ", len_df)
+        print("duplicates removed:", len_df - len(df))
     return df
 
 def clean_up_df_symbol(path):
     df = pd.read_csv(path)
     df = drop_df_duplicates(df, "symbol")
+    for c in df.columns:
+        if c.startswith("Unnamed"):
+            df.drop(c, axis=1, inplace=True)
+
     df.to_csv(path)
 
