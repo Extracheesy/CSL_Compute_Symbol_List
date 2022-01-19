@@ -1,5 +1,5 @@
-import re
-from selenium import webdriver
+# import re
+# from selenium import webdriver
 import pandas as pd
 import config
 
