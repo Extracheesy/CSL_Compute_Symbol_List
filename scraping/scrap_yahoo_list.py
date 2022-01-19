@@ -3,6 +3,9 @@ from selenium import webdriver
 import pandas as pd
 import config
 
+from bs4 import BeautifulSoup
+import requests
+
 from yahoo_fin import stock_info as si
 from scrap_wiki_list import make_df_stock_info
 
@@ -198,23 +201,19 @@ def get_list_most_actives():
 
     return df
 
-def get_list_trending_tickers(driver):
-    driver.get('https://finance.yahoo.com/trending-tickers')
-    html_src_1 = driver.page_source
+def get_list_trending_tickers():
+    url = 'https://finance.yahoo.com/trending-tickers'
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'lxml')
 
-    html_src_str_1 = str(html_src_1)
-    html_src_str_1 = html_src_str_1.replace("{",'\n')
-    html_src_str_1 = html_src_str_1.replace("}",'\n')
-
-    match_1 = re.findall(r'"YFINANCE:.*","fallbackCategory":', html_src_str_1)
-    tmp_string = match_1[0][10:]
-    size = len(tmp_string)
-    string = tmp_string[: size - 21]
-    list_trending = string.split(",")
+    list_trending = []
+    list_company_name = []
+    for item in soup.select('.simpTblRow'):
+        list_trending.append(item.select('[aria-label=Symbol]')[0].get_text())
+        list_company_name.append(item.select('[aria-label=Name]')[0].get_text())
 
     list_sectors = ['' for i in range(len(list_trending))]
     list_industry = ['' for i in range(len(list_trending))]
-    list_company_name = ['' for i in range(len(list_trending))]
 
     list_isin = ['' for i in range(len(list_trending))]
     list_country = ['' for i in range(len(list_trending))]
@@ -251,7 +250,7 @@ def get_list_YAHOO():
         driver.find_element_by_name("agree").click()
 
     df_actives = get_list_most_actives()
-    df_trending = get_list_trending_tickers(driver)
+    df_trending = get_list_trending_tickers()
     df_gainers = get_list_gainers()
     df_loosers = get_list_losers()
     df_undervalated = get_list_undervalued()
