@@ -224,6 +224,7 @@ def get_list_trending_tickers():
     return df
 
 def get_list_YAHOO():
+    """
     if (config.COLAB == True):
         options = webdriver.ChromeOptions()
         options.add_argument('-headless')
@@ -248,6 +249,7 @@ def get_list_YAHOO():
 
     if (config.COLAB == False):
         driver.find_element_by_name("agree").click()
+    """
 
     df_actives = get_list_most_actives()
     df_trending = get_list_trending_tickers()

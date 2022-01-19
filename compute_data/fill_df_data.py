@@ -42,9 +42,9 @@ def fill_df(input_file):
     df_isni.reset_index(drop=True, inplace=True)
 
 
-    print("symbols with data: ", len(list_stock_no_data), " => ", filename)
-    print("Symbols with ISNI: ", len(df_isni), " => ", filename_isni)
-    print("Dropped symbols:   ", len(list_stock_dropped), " =>  Get the fuck out")
+    print("symbols with data: ", len(df), " => ", filename)
+    print("symbols with ISNI: ", len(df_isni), " => ", filename_isni)
+    print("dropped symbols:   ", len(list_stock_dropped), " =>  Get the fuck out")
     # print(list_stock_no_data)
 
     df.to_csv(filename)

@@ -47,8 +47,10 @@ def drop_df_duplicates(df, column):
     df.drop_duplicates([column], keep='first',inplace=True)
     df.reset_index(drop=True, inplace=True)
     if(len_df - len(df) > 0):
-        print("ticker nb: ", len_df)
-        print("duplicates removed:", len_df - len(df))
+        print("total tickers nb:      ", len_df)
+        print("-> duplicates removed: ", len_df - len(df))
+        print("-> remaining symbols:  ", len(df))
+        print("")
     return df
 
 def clean_up_df_symbol(path):
