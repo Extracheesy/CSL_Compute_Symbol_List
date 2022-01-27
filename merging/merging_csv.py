@@ -18,9 +18,9 @@ def merge_csv_to_df(path, pattern):
     li = []
     for entry in listOfFilesToRemove:
         if fnmatch.fnmatch(entry, pattern):
-            print("csv file : ",entry)
             # df = pd.read_csv(entry, index_col=False, header=0)
             df = pd.read_csv(entry, index_col=[0])
+            print("csv file : ", entry, " => ", len(df), " symbols")
             li.append(df)
     df_frame = pd.concat(li, axis=0, ignore_index=True)
 

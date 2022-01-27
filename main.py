@@ -39,6 +39,8 @@ if __name__ == '__main__':
     if(config.CLEAN_DATABASE == True):
         clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA)
         clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA_ISNI)
+    if(config.CLEAN_EURONEXT_DATABASE == True):
+        clean_up_df_symbol(config.INPUT_FILE_IMPORTED_DATA_EURONEXT)
 
     mk_directories()
 
